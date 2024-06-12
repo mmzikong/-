@@ -88,36 +88,47 @@ public class Exam_2024 {
                     }
                     if (group[2] - group[1] > group[1] - group[0]) {
                         if (j == newLength - 3 && k == newLength - 2 && l == newLength - 1) {
-                            splitArrays.clear();
+                            if (!splitArrays.isEmpty()){
+                                splitArrays.removeLast();
+                                arr = oldArr;
+                                i --;
+                                j = b[i];
+                                k = c[i];
+                                l = d[i];
+                                for (int f=0; f<i; f++){
+                                    arr = removeFour(arr,0,b[f],c[f],d[f]);
+                                }
+                                newLength = arr.length;
+                                break outerLoopThird;
+                            }
                             break outerLoopFirst;
                         }
                         break outerLoopThird;
                     }
                     if (group[1] - group[0] > numGroups) {
-                        splitArrays.clear();
-                        break outerLoopFirst;
+                        if (!splitArrays.isEmpty()){
+                            splitArrays.removeLast();
+                            arr = oldArr;
+                            i --;
+                            j = b[i];
+                            k = c[i];
+                            l = d[i];
+                            for (int f=0; f<i; f++){
+                                arr = removeFour(arr,0,b[f],c[f],d[f]);
+                            }
+                            newLength = arr.length;
+                            break outerLoopThird;
+                        }
+                        else{
+                            break outerLoopFirst;
+                        }
                     }
                     if (isArithmeticalSequence(group)) {
                         arr = removeFour(arr, 0, j, k, l);
                         if (arr.length + (i + 1) * 4 == length) {
-                            for (int index = 0; index < length; index++) {
-                                if (group[0] == oldArr[index]) {
-                                    a[i] = index;
-                                    continue;
-                                }
-                                if (group[1] == oldArr[index]) {
-                                    b[i] = index;
-                                    continue;
-                                }
-                                if (group[2] == oldArr[index]) {
-                                    c[i] = index;
-                                    continue;
-                                }
-                                if (group[3] == oldArr[index]) {
-                                    d[i] = index;
-                                    break;
-                                }
-                            }
+                            b[i] = j;
+                            c[i] = k;
+                            d[i] = l;
                             i++;
                         }
                         newLength = arr.length;
@@ -132,11 +143,16 @@ public class Exam_2024 {
                         if (j == newLength - 3 && k == newLength - 2 && l == newLength - 1) {
                             splitArrays.removeLast();
                             arr = oldArr;
-                            newLength = arr.length;
                             i --;
-                            j = a[i];
-                            k = b[i];
-                            l = c[i];
+                            j = b[i];
+                            k = c[i];
+                            l = d[i];
+                            if (!splitArrays.isEmpty()){
+                                for (int f=0; f<i; f++){
+                                    arr = removeFour(arr,0,b[f],c[f],d[f]);
+                                }
+                            }
+                            newLength = arr.length;
                         }
                     }
                 }
@@ -157,28 +173,29 @@ public class Exam_2024 {
                 if (!splitArrays.isEmpty()){
                     count++;
                     System.out.println("是("+(i+1)+","+(j+1)+")的一一可分数列");
-//                    for (int[] splitArray : splitArrays) {
-//                        for (int element : splitArray) {
-//                            System.out.print(element + " ");
-//                        }
-//                        System.out.println();
-//                    }
                 }
             }
         }
         int total = (2*m+1)*(4*m+1);
         float p = (float)count/total;
         System.out.println("总数为："+count);
+        System.out.println("答案应为：" + (m*m+m+1));
         System.out.println("概率Pm为：" + p);
         System.out.println("1/8为：" + (float)1/8);
     }
 
     public static void main(String[] args) {
-        int[] arr = creatArray(4);
-        printArray(arr);
-        arr = removeTwo(arr,6,17);
-        printArray(arr);
-        splitArray(arr);
-//        isDivisible(4);
+//        int[] arr = creatArray(4);
+//        printArray(arr);
+//        arr = removeTwo(arr,2,13);
+//        printArray(arr);
+//        List<int[]>splitArrays = splitArray(arr);
+//        for (int[] splitArray : splitArrays) {
+//            for (int element : splitArray) {
+//                System.out.print(element + " ");
+//            }
+//            System.out.println();
+//        }
+        isDivisible(9);
     }
 }
