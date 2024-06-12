@@ -90,16 +90,16 @@ public class Exam_2024 {
                     if (group[3] - group[2] > group[1] - group[0]) {
                         //判断是否已经遍历了该数组的所有情况
                         if (j == newLength - 3 && k == newLength - 2 && l == newLength - 1) {
-                            //返回上一次已经构成的等差数列，重新选值
-                            //删除上一次的选值
-                            splitArrays.removeLast();
-                            arr = oldArr;
-                            i --;
-                            //j,k,l返回上一次的下标
-                            j = b[i];
-                            k = c[i];
-                            l = d[i];
                             if (!splitArrays.isEmpty()){
+                                //返回上一次已经构成的等差数列，重新选值
+                                //删除上一次的选值
+                                splitArrays.removeLast();
+                                arr = oldArr;
+                                i --;
+                                //j,k,l返回上一次的下标
+                                j = b[i];
+                                k = c[i];
+                                l = d[i];
                                 //将数组变为上一次选值前的情况
                                 for (int f=0; f<i; f++){
                                     arr = removeFour(arr,0,b[f],c[f],d[f]);
@@ -113,13 +113,13 @@ public class Exam_2024 {
                     }
                     if (group[2] - group[1] > group[1] - group[0]) {
                         if (j == newLength - 3 && k == newLength - 2 && l == newLength - 1) {
-                            splitArrays.removeLast();
-                            arr = oldArr;
-                            i --;
-                            j = b[i];
-                            k = c[i];
-                            l = d[i];
                             if (!splitArrays.isEmpty()){
+                                splitArrays.removeLast();
+                                arr = oldArr;
+                                i --;
+                                j = b[i];
+                                k = c[i];
+                                l = d[i];
                                 for (int f=0; f<i; f++){
                                     arr = removeFour(arr,0,b[f],c[f],d[f]);
                                 }
@@ -239,7 +239,7 @@ public class Exam_2024 {
 //            }
 //            System.out.println();
 //        }
-        isDivisible(7);
+        isDivisible(1);
 //        for (int i = 1; i <= 8; i++) {
 //            System.out.println("---------------------- m="+ i +"----------------------");
 //            isDivisible(i);
