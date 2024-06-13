@@ -201,6 +201,7 @@ public class Exam_2024 {
         int[] arr = creatArray(m);
         printArray(arr);
         int count = 0;
+        long startTime = System.currentTimeMillis();
         for (int i = 0; i < arr.length -1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 int[] newArr = removeTwo(arr,i+1,j+1);
@@ -219,6 +220,9 @@ public class Exam_2024 {
                 }
             }
         }
+        long endTime = System.currentTimeMillis();
+        long elapsedTime = endTime - startTime;
+        System.out.println("执行时间："+elapsedTime+"毫秒");
         int total = (2*m+1)*(4*m+1);
         float p = (float)count/total;
         System.out.println("总数为："+count);
@@ -239,7 +243,7 @@ public class Exam_2024 {
 //            }
 //            System.out.println();
 //        }
-        isDivisible(1);
+        isDivisible(7);
 //        for (int i = 1; i <= 8; i++) {
 //            System.out.println("---------------------- m="+ i +"----------------------");
 //            isDivisible(i);
