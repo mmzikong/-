@@ -76,7 +76,7 @@ public class Exam_2024 {
         int i = 0;
         outerLoopFirst:
         for (int j = 1; j < newLength - 2; j++) {
-            outerLoopThird:
+            outerLoopSecond:
             for (int k = j + 1; k < newLength - 1; k++) {
                 for (int l = k + 1; l < newLength; l++) {
                     //用于存放找到的数组
@@ -105,7 +105,7 @@ public class Exam_2024 {
                                     arr = removeFour(arr,0,b[f],c[f],d[f]);
                                 }
                                 newLength = arr.length;
-                                break outerLoopThird;
+                                break outerLoopSecond;
                             }else
                                 break outerLoopFirst;
                         }
@@ -124,11 +124,11 @@ public class Exam_2024 {
                                     arr = removeFour(arr,0,b[f],c[f],d[f]);
                                 }
                                 newLength = arr.length;
-                                break outerLoopThird;
+                                break outerLoopSecond;
                             }else
                                 break outerLoopFirst;
                         }
-                        break outerLoopThird;
+                        break outerLoopSecond;
                     }
                     //步长大于最大公差，本次循环下都不可能
                     if (group[1] - group[0] > numGroups) {
@@ -143,7 +143,7 @@ public class Exam_2024 {
                                 arr = removeFour(arr,0,b[f],c[f],d[f]);
                             }
                             newLength = arr.length;
-                            break outerLoopThird;
+                            break outerLoopSecond;
                         }
                         else{
                             break outerLoopFirst;

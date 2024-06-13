@@ -1,37 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
 
 public class ArraySplitter {
-    public static List<int[]> splitArray(int[] array) {
-        List<int[]> splitArrays = new ArrayList<>();
-        int length = array.length;
-        int numGroups = length / 4;
-        int remainder = length % 4;
-
-        for (int i = 0; i < numGroups; i++) {
-            int[] group = new int[4];
-            System.arraycopy(array, i * 4, group, 0, 4);
-            splitArrays.add(group);
+    private static void printArray(int[] arr){
+        for (int index : arr) {
+            System.out.print(index + ",");
         }
-
-        if (remainder > 0) {
-            int[] group = new int[remainder];
-            System.arraycopy(array, numGroups * 4, group, 0, remainder);
-            splitArrays.add(group);
-        }
-
-        return splitArrays;
+        System.out.println();
     }
 
     public static void main(String[] args) {
-        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13};
-        List<int[]> splitArrays = splitArray(array);
-
-        for (int[] splitArray : splitArrays) {
-            for (int element : splitArray) {
-                System.out.print(element + " ");
-            }
-            System.out.println();
+        int[] array = {3, 7, 13, 21, 31, 43, 59, 79, 100, 121, 144, 169,196};
+        printArray(array);
+        int[] newArray = new int[array.length];
+        for (int i = 1; i <= array.length; i++) {
+            newArray[i-1] = array[i-1] - i*i-i-1;
         }
+        printArray(newArray);
     }
 }
