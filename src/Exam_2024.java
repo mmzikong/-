@@ -59,9 +59,8 @@ public class Exam_2024 {
     private static List<int[]> splitArray(int[] arr) {
         //用于存放数组的队列
         List<int[]> splitArrays = new ArrayList<>();
-
         int length = arr.length;
-        //共可分为数组长度/4的组数，即原题中的m,同时要理解每组的最大公差，即每一组的步长最大不超过m
+        //共可分为数组长度/4的组数，即原题中的m,同时要理解也是每组的最大公差，即每一组的步长最大不超过m
         //所有的公差组合，每组公差可以为[1,1,1...1]或[1,1,1...2]或...或[m,m,m...m]共m*m种组合
         int numGroups = length / 4;
         //数组b,c,d用于存放每次取值后原数组的下标
@@ -106,12 +105,15 @@ public class Exam_2024 {
                                 }
                                 newLength = arr.length;
                                 break outerLoopSecond;
-                            }else
+                            }
+                            //若队列为空，说明所有情况已经遍历，这种情况不是可分数组
+                            else
                                 break outerLoopFirst;
                         }
                         break;
                     }
                     if (group[2] - group[1] > group[1] - group[0]) {
+                        //与上一个结构同理
                         if (j == newLength - 3 && k == newLength - 2 && l == newLength - 1) {
                             if (!splitArrays.isEmpty()){
                                 splitArrays.removeLast();
@@ -232,18 +234,18 @@ public class Exam_2024 {
     }
 
     public static void main(String[] args) {
-//        int[] arr = creatArray(7);
-//        printArray(arr);
-//        arr = removeTwo(arr,2,13);
-//        printArray(arr);
-//        List<int[]>splitArrays = splitArray(arr);
-//        for (int[] splitArray : splitArrays) {
-//            for (int element : splitArray) {
-//                System.out.print(element + " ");
-//            }
-//            System.out.println();
-//        }
-        isDivisible(7);
+        int[] arr = creatArray(7);
+        printArray(arr);
+        arr = removeTwo(arr,22,25);
+        printArray(arr);
+        List<int[]>splitArrays = splitArray(arr);
+        for (int[] splitArray : splitArrays) {
+            for (int element : splitArray) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+//        isDivisible(1);
 //        for (int i = 1; i <= 8; i++) {
 //            System.out.println("---------------------- m="+ i +"----------------------");
 //            isDivisible(i);
